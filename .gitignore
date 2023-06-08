@@ -8,3 +8,6 @@ mlops/*
 Week_2/homework/*
 Week_2/mlruns/*
 Week_2/models/*
+Week_3/mlruns/*
+.DS_Store
+Week_3/models/preprocessor.b

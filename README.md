@@ -6,8 +6,7 @@ Each weeks code will be in a seperate directory.
 
 
 
-### Week 1: Intro
+### Notes
 
-This week is for basic setup and basic introduction to ML. 
-
-
+The command to run MLflow server locally is:
+`mlflow ui --backend-store-uri sqlite:///mlflow.db`
