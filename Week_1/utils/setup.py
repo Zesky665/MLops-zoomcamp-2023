@@ -246,7 +246,7 @@ if __name__ == '__main__':
     
     if os.path.isfile("/Users/zharec/MLops-zoomcamp-2023/Week_1/status.json") == False:
         try:
-            key_name = 'mlops-week-1-key-pair'
+            key_name = 'foundry-key-pair'
             create_key_pair(key_name)
             allocation_id=allocate_elastic_ip_address()
             instance = create_instance(key_name)

@@ -72,16 +72,16 @@ def run_register_model(data_path: str, top_n: int):
 
     client = MlflowClient()
 
-    # Retrieve the top_n model runs and log the models
-    experiment = client.get_experiment_by_name(HPO_EXPERIMENT_NAME)
-    runs = client.search_runs(
-        experiment_ids=experiment.experiment_id,
-        run_view_type=ViewType.ACTIVE_ONLY,
-        max_results=top_n,
-        order_by=["metrics.rmse ASC"]
-    )
-    for run in runs:
-        train_and_log_model(data_path=data_path, params=run.data.params)
+    # # Retrieve the top_n model runs and log the models
+    # experiment = client.get_experiment_by_name(HPO_EXPERIMENT_NAME)
+    # runs = client.search_runs(
+    #     experiment_ids=experiment.experiment_id,
+    #     run_view_type=ViewType.ACTIVE_ONLY,
+    #     max_results=top_n,
+    #     order_by=["metrics.rmse DESC"]
+    # )
+    # for run in runs:
+    #     train_and_log_model(data_path=data_path, params=run.data.params)
 
     # Select the model with the lowest test RMSE
     experiment = client.get_experiment_by_name(HPO_EXPERIMENT_NAME)
@@ -93,11 +93,16 @@ def run_register_model(data_path: str, top_n: int):
         order_by=["metrics.test_rmse DESC"],
     )[0]
 
+
+    print("!!!!!!!!!!!!!!!!!")
+    print(best_run._info.run_id)
+    print("!!!!!!!!!!!!!!!!!")
+    
     # Register the best model
     mlflow.register_model(
-    f'runs:/{best_run}/RandomForestRegressor', "HPO_EXPERIMENT_NAME"
+    f'runs:/{best_run._info.run_id}/{RandomForestRegressor}', "HPO_EXPERIMENT_NAME"
 )
 
 
 if __name__ == '__main__':
-    run_register_model()
+    test = run_register_model()
