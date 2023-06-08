@@ -3,3 +3,8 @@ Week_1/mlops-week-1-key-pair.pem
 *.pem
 *.pkk
 *.parquet
+mlflow.db
+mlops/*
+Week_2/homework/*
+Week_2/mlruns/*
+Week_2/models/*
